@@ -81,3 +81,20 @@ If the counter is less than
 𝑘
 k, return "YES" (class is canceled).
 Otherwise, return "NO" (class is not canceled).*/
+
+/*
+Explanation:
+angryProfessor Method:
+
+We initialize a counter onTimeCount to count the number of students who arrived on time.
+We iterate through the list a of arrival times. If an arrival time is less than or equal to 0, we increment the onTimeCount.
+After counting, we compare onTimeCount with the threshold k. If onTimeCount is less than k, we return "YES" (class is canceled); otherwise, we return "NO" (class is not canceled).
+main Method:
+
+We use BufferedReader to read the input efficiently.
+We read the number of test cases t.
+For each test case, we read the values of n (number of students) and k (threshold number of students).
+We read the arrival times of the students into a list a.
+We call the angryProfessor method with k and a as arguments and print the result.
+This approach ensures that we efficiently determine whether the class is canceled based on the given conditions.
+*/
