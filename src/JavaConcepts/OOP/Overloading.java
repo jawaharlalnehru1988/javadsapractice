@@ -1,4 +1,4 @@
-package DSA;
+package JavaConcepts.OOP;
 
 class Calculator {
     // Overloaded methods with different parameter lists

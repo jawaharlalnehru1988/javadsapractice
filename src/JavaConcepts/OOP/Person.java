@@ -1,4 +1,4 @@
-package DSA;
+package JavaConcepts.OOP;
 
 public class Person {
     private String name;

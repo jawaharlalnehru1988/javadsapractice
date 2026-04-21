@@ -1,4 +1,4 @@
-package DSA;
+package JavaConcepts.Collections;
 
 import java.util.ArrayDeque;
 

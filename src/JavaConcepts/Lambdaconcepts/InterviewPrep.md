@@ -33,7 +33,57 @@ A local variable is "effectively final" if its value is never changed after init
 - `Supplier<T>`: Takes nothing, returns `T` (e.g., for lazy loading).
 - `Function<T, R>`: Transforms `T` into `R` (e.g., for mapping).
 
+## 6. Collections Creation & Mutability
+This is a common "gotcha" question.
+
+| Feature | `Arrays.asList()` | `List.of()` (Java 9+) | `new ArrayList<>(...)` |
+| :--- | :--- | :--- | :--- |
+| **Mutability** | **Partial** (can `set()` items, but can't change size) | **Immutable** (completely read-only) | **Fully Mutable** (add/remove/update) |
+| **Null Elements** | Allowed | **Prohibited** (throws NPE) | Allowed |
+| **Version** | Since JDK 1.2 | Since JDK 9 | Since JDK 1.2 |
+
+## 7. Exception Hierarchy
+Everything that can be "thrown" in Java descends from `java.lang.Throwable`.
+
+- **Throwable**
+  - **Error**: Severe system failures (e.g., `OutOfMemoryError`). Do not catch!
+  - **Exception**: Problems your code can solve.
+    - **RuntimeException** (Unchecked): Coding errors (e.g., `NullPointerException`).
+    - **Other Exceptions** (Checked): External factors (e.g., `IOException`).
+
+## 8. Checked vs. Unchecked
+| Property | Checked Exception | Unchecked (Runtime) Exception |
+| :--- | :--- | :--- |
+| **Compiler** | Forced to catch or declare | Optional to catch |
+| **Example** | `FileNotFoundException`, `SQLException` | `ArithmeticException`, `NPE` |
+| **Meaning** | Recoverable external issue | Program logic error |
+
+## 9. Try-Catch-Finally Flow
+- **try**: Risky code that might throw an exception.
+- **catch**: Code to handle a *specific* exception.
+- **finally**: Code that **always** runs, usually for cleanup (closing files/DB connections).
+
+## 10. Top 10 Must-Know Java Exceptions
+| Exception | Category | Trigger |
+| :--- | :--- | :--- |
+| **`NullPointerException`** | Unchecked | Accessing methods on a `null` object. |
+| **`ArithmeticException`** | Unchecked | Division by zero or math errors. |
+| **`ArrayIndexOutOfBoundsException`** | Unchecked | Accessing non-existent array index. |
+| **`NumberFormatException`** | Unchecked | Parsing non-numeric strings as numbers. |
+| **`ClassCastException`** | Unchecked | Invalid casting between types. |
+| **`IllegalArgumentException`** | Unchecked | Passing incorrect arguments to a method. |
+| **`IllegalStateException`** | Unchecked | Method called at an inappropriate time. |
+| **`FileNotFoundException`** | Checked | Accessing a file that does not exist. |
+| **`IOException`** | Checked | General input/output failures. |
+| **`InterruptedException`** | Checked | A thread is interrupted while waiting/sleeping. |
+| **`ConcurrentModificationException`** | Unchecked | Modifying a list while iterating over it. |
+| **`IllegalStateException`** | Unchecked | Method called when object is in invalid state. |
+| **`StackOverflowError`** | **Error** | Infinite recursion (Method calls itself forever). |
+| **`OutOfMemoryError`** | **Error** | JVM exhausted all heap memory. |
+
 ---
+
+
 
 ### 🔥 Pro Tip:
 When asked about Lambdas, always mention the **invokedynamic** instruction and how it helps avoid the overhead of creating extra objects compared to inner classes. This shows deep JVM knowledge!

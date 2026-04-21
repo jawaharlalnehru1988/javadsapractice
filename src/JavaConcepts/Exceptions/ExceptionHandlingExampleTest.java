@@ -1,4 +1,4 @@
-package DSA;
+package JavaConcepts.Exceptions;
 
 import java.util.Scanner;
 
